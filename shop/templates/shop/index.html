@@ -1,0 +1,122 @@
+{% extends "shop/basic.html" %}
+
+{% block title %}MyAwesomeCart.com{% endblock %}
+
+
+{% block CSS%}
+.carousel-control-prev,
+.carousel-control-next {
+  position:absolute;
+width: 33px;
+height: 33px;
+background-color: blue;
+top: 33vh;
+bottom:auto;
+margin: 0px 10px;
+
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+background-color: black;
+}
+.col-md-6{
+width: 22.2%;
+}
+.col-md-6 img {
+width: 100%;
+height:250px;
+}
+
+
+.container-fluid > h3{
+text-align: center;
+margin:auto;
+bottom: -5px;
+position: relative;
+
+}
+.carousel-indicators > .active{
+
+background-color: blue;
+}
+.carousel-indicators [data-bs-target] {
+  
+    background-color: #6e2929;
+    position: absolute;
+    bottom: -30px;
+}
+{% endblock%}
+
+{% block body%}
+<!-- Carousel starts here -->
+{% for product ,range,nslides in allProds%}
+<div class="container-fluid ">
+  <h3>{{product.0.category}} </h3><hr>
+  <div id="carouselExampleIndicators{{forloop.counter}}" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators{{forloop.counter}}" data-bs-slide-to="0"
+        class="active" aria-current="true" aria-label="Slide 1"></button>
+
+      {%for i in range %}
+      <button type="button" data-bs-target="#carouselExampleIndicators{{forloop.parentloop.counter}}"
+        data-bs-slide-to="{{i}}" aria-label="Slide {{i}}"></button>
+      {% endfor %}
+    </div>
+
+    <div class="container carousel-inner no-padding ">
+      <div class="carousel-item active">
+        <div class='row d-flex justify-content-center'>
+          {%for i in product%}
+          <div class="col-md-6">
+            <div class="card " style="width: 18rem">
+              <img src="/media/{{i.image}}" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 id='namepr{{i.id}}' class="card-title">{{i.product_name}}</h5>
+                <h4 id='pricepr{{i.id}}'>{{i.Price}}</h4>
+                <p class="card-text">
+                  {{i.desc|slice:"0:50"}}..
+                </p>
+                <span id="divpr{{i.id}}" class="divpr">
+                  <button id="pr{{i.id}}" class="btn btn-primary cart">Add to cart</button>
+                </span>
+                <a href="/shop/product/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-success ">Quick
+                    View</button></a>
+              </div>
+            </div>
+          </div>
+          {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div>
+      </div>
+      <div class="carousel-item ">
+        <div class="row d-flex justify-content-center">
+
+          {% endif %}
+          {%endfor%}
+
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev bg-dark" type="button"
+      data-bs-target="#carouselExampleIndicators{{forloop.counter}}" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next bg-dark" type="button"
+      data-bs-target="#carouselExampleIndicators{{forloop.counter}}" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</div>
+{% endfor%}
+{% endblock%}
+
+  {% block js %} {% load static%}
+  {% comment %} <script>
+    {% if  not found %}
+    alert('sorry we cannot find any matches!')
+    {% endif %}
+  </script> {% endcomment %}
+
+  {% endblock%}

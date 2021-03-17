@@ -1,0 +1,33 @@
+{% extends 'shop/basic.html' %}
+{% block title %}Quick View{% endblock %}
+
+{% block CSS%}
+ footer{
+          position: absolute;
+          top: 100vh;
+          transform: translateY(-100%);
+          width: 100%;
+    }
+{% endblock%}
+
+
+{% block body%}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <img src="/media/{{product.image}}" alt="">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <h2>
+                    {{ product.product_name }}
+                </h2>
+                <p>{{product.desc}}</p>
+                <span>M.R.P-<strong >{{product.Price}}</strong>Rs</span>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

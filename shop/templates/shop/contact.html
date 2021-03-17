@@ -1,0 +1,77 @@
+{% extends 'shop/basic.html' %}
+{% block title %}Contact us{% endblock %}
+
+{% block CSS%}
+#alert-box{
+display:none;
+}
+ footer{
+          position: absolute;
+          top: 100vh;
+          transform: translateY(-100%);
+          width: 100%;
+    }
+{% endblock%}
+
+
+{% block Navbar%}
+<li class="nav-item">
+        <a class="nav-link" aria-current="page" href="/shop/">Home</a>
+</li>
+<li class="nav-item">
+        <a class="nav-link " href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+        <a class="nav-link active" href="#">Contact us</a>
+</li>
+<li class="nav-item">
+        <a class="nav-link " href="/shop/tracker/">Tracker</a>
+</li>
+{%endblock%}
+
+{% block body%}
+<div class="alert-box">
+
+</div>
+
+
+<div class="container my-4 ml-3 pb--10 ">
+        <form action="/shop/contact/" method="POST">{% csrf_token %}
+                <div class="mb-3 ">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-3">
+                        <label for="email" class="form-label">Email address:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                </div>
+                <div class="mb-3">
+                        <label for="phone" class="form-label">Phone No</label>
+                        <input type="number" class="form-control" id="phone" name="phone"
+                                placeholder="Enter your Phone number" required>
+                </div>
+                <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
+                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
+                                rows="3" required></textarea>
+                </div>
+                <button id='contactSubmit' type="submit" class="btn btn-primary my-2">Submit</button>
+        </form>
+</div>
+{%endblock%}
+
+{% block js %}
+<script>    
+// contact box
+{% comment %} console.log('hi');
+$('#contactSubmit').click(function(){
+    let msg=` <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Thanks for getting in touch!</strong> We appreciate you contacting us. One of our colleagues will get back in touch with you soon!
+Have a great day!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>`
+$('.alert-box').append(msg);
+}) {% endcomment %}
+
+</script>
+{% endblock%}
