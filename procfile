@@ -1,1 +1,1 @@
-web gunicorn  mac_.wsgi:application --log-file -
+web: gunicorn  mac_.wsgi
