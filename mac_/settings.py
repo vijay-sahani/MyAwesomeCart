@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'jz#8m#xch$i7k&j-p(&zytw(s0%!ejo8@3f&99#5zwst4cg+!7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','myawesomecart1.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','myawesomecart1.herokuapp.com','localhost']
 
 
 # Application definition
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -124,6 +123,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEADIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
-STATIC_URL=os.path.join(BASE_DIR,'static')
 
 django_heroku.settings(locals())
