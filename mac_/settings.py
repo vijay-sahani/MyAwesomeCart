@@ -26,7 +26,7 @@ SECRET_KEY = 'jz#8m#xch$i7k&j-p(&zytw(s0%!ejo8@3f&99#5zwst4cg+!7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','myawesomecart1.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','myawesomecart23.herokuapp.com/','localhost']
 
 
 # Application definition
